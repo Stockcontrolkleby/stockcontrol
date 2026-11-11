@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movimentação - StockControl</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- MENU LATERAL -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <span class="logo-icon">▣</span>
+                <h2>StockControl</h2>
+            </div>
+
+            <nav>
+                <p class="menu-title">MENU PRINCIPAL</p>
+
+                <a href="index.html">⌂ &nbsp; Início</a>
+                <a href="cadastro.html">
+                    ＋ &nbsp; Cadastrar produto
+                </a>
+                <a href="produtos.html">▤ &nbsp; Produtos</a>
+                <a href="movimentacao.html" class="active">
+                    ⇄ &nbsp; Movimentação
+                </a>
+                <a href="estoque-baixo.html">
+                    ⚠ &nbsp; Estoque baixo
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                Sistema de Controle de Estoque
+            </div>
+
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="main-content">
+
+            <header class="topbar">
+                <span>Painel de controle / Movimentação</span>
+                <span class="user">Administrador</span>
+            </header>
+
+            <section class="welcome">
+                <h1>Movimentação de estoque</h1>
+                <p>
+                    Registre entradas e saídas de produtos
+                    e acompanhe o histórico.
+                </p>
+            </section>
+
+            <!-- FORMULÁRIO DE MOVIMENTAÇÃO -->
+            <section class="movement-container">
+
+                <h2>Nova movimentação</h2>
+
+                <p class="section-description">
+                    Informe os dados da movimentação.
+                </p>
+
+                <form id="form-movimentacao">
+
+                    <div class="form-group">
+                        <label for="produto">Produto</label>
+
+                        <select id="produto" required>
+                            <option value="" selected disabled>
+                                Selecione um produto
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tipo">
+                            Tipo de movimentação
+                        </label>
+
+                        <select id="tipo" required>
+                            <option value="" selected disabled>
+                                Selecione o tipo
+                            </option>
+
+                            <option value="entrada">Entrada</option>
+                            <option value="saída">Saída</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quantidade-movimento">
+                            Quantidade
+                        </label>
+
+                        <input
+                            type="number"
+                            id="quantidade-movimento"
+                            min="1"
+                            step="1"
+                            placeholder="Ex: 10"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-buttons">
+
+                        <button type="reset" class="btn-clear">
+                            Limpar campos
+                        </button>
+
+                        <button type="button" class="btn-save">
+                            Registrar movimentação
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+            <!-- HISTÓRICO DE MOVIMENTAÇÕES -->
+            <section class="movement-container"
+                     style="margin-top: 30px;">
+
+                <h2>Histórico de movimentações</h2>
+
+                <p class="section-description">
+                    Consulte as entradas e saídas registradas
+                    no sistema.
+                </p>
+
+                <div style="overflow-x: auto;">
+
+                    <table id="tabela-historico"
+                           style="width: 100%; border-collapse: collapse;">
+
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Produto</th>
+                                <th>Tipo</th>
+                                <th>Quantidade</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="historico-movimentacoes">
+
+                            <tr>
+                                <td colspan="4"
+                                    style="text-align: center;">
+                                    Carregando movimentações...
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+            <footer>
+                StockControl © 2026 -
+                Sistema de Controle de Estoque
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>

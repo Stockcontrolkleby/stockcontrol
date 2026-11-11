@@ -1,0 +1,578 @@
+/* CONFIGURAÇÕES GERAIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #F3F5F8;
+    color: #17243A;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* MENU LATERAL */
+.sidebar {
+    width: 250px;
+    background-color: #17243A;
+    color: white;
+    padding: 25px 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 45px;
+}
+
+.logo h2 {
+    font-size: 20px;
+}
+
+.logo-icon {
+    background-color: #3976AE;
+    padding: 9px;
+    border-radius: 8px;
+    font-size: 20px;
+}
+
+.menu-title {
+    color: #91A2B8;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.sidebar nav a {
+    display: block;
+    text-decoration: none;
+    color: #C4D1E0;
+    padding: 14px 12px;
+    margin-bottom: 8px;
+    border-radius: 7px;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+    background-color: #315B86;
+    color: white;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    color: #91A2B8;
+    font-size: 11px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+/* CONTEÚDO PRINCIPAL */
+.main-content {
+    flex: 1;
+    padding: 30px 40px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    font-size: 14px;
+}
+
+.user {
+    background-color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+}
+
+/* BOAS-VINDAS */
+.welcome {
+    margin-bottom: 30px;
+}
+
+.welcome h1 {
+    font-size: 27px;
+    margin-bottom: 8px;
+}
+
+.welcome p {
+    color: #758196;
+    font-size: 14px;
+}
+
+/* CARDS DE INFORMAÇÕES */
+.statistics {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background-color: white;
+    padding: 23px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.stat-card p {
+    color: #758196;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.stat-card h2 {
+    font-size: 25px;
+}
+
+.stat-icon {
+    padding: 13px;
+    border-radius: 10px;
+    font-size: 23px;
+}
+
+.blue {
+    background-color: #E5EFFA;
+    color: #3976AE;
+}
+
+.green {
+    background-color: #E2F4E9;
+    color: #21865D;
+}
+
+.orange {
+    background-color: #FFF0DC;
+    color: #D18B32;
+}
+
+/* ACESSOS RÁPIDOS */
+.quick-access h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.section-description {
+    color: #758196;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.access-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 18px;
+}
+
+.access-card {
+    background-color: white;
+    border: 1px solid #E8EBF0;
+    border-radius: 12px;
+    padding: 23px;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.access-card:hover {
+    border-color: #3976AE;
+    transform: translateY(-3px);
+}
+
+.access-card span {
+    color: #3976AE;
+    font-size: 27px;
+}
+
+.access-card h3 {
+    margin: 12px 0 7px;
+    font-size: 16px;
+}
+
+.access-card p {
+    color: #758196;
+    font-size: 13px;
+}
+
+/* RODAPÉ */
+footer {
+    margin-top: 45px;
+    text-align: center;
+    color: #98A2B3;
+    font-size: 12px;
+}
+
+/* RESPONSITIVIDADE */
+@media (max-width: 850px) {
+    .statistics {
+        grid-template-columns: 1fr;
+    }
+
+    .main-content {
+        padding: 25px 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .sidebar {
+        width: 180px;
+        padding: 18px 10px;
+    }
+
+    .logo h2 {
+        font-size: 15px;
+    }
+
+    .access-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* TELA DE CADASTRO */
+
+.form-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 750px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.form-container h2{
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 22px;
+}
+
+.form-group input,
+.form-group select {
+    padding: 13px;
+    border: 1px solid #DCE1E8;
+    border-radius: 7px;
+    font-size: 14px;
+    outline: none;
+    background-color: white;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #3976AE;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.form-buttons button {
+    padding: 13px 20px;
+    border-radius: 7px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-clear {
+    background-color: #E9EDF2;
+    color: #39465A;
+}
+
+.btn-save {
+    background-color: #3976AE;
+    color: white;
+}
+
+.btn-save:hover {
+    background-color: #285D8E;
+}
+
+/* TELA DE PRODUTOS */
+
+.products-container {
+    background-color: white;
+    padding: 28px;
+    border-color: 12px;
+    box-shadow: 0 2px 8px egba(0,0,0,0.04);
+}
+
+.products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.products-header h2 {
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+
+.btn-new-product {
+    background-color: #3976AE;
+    color: white;
+    padding: 12px 17px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.btn-new-product:hover {
+    background-color: #285D8E;
+}
+
+.table-container {
+    width: 100%;
+    overflow: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #F3F5F8;
+    color: #39465A;
+    padding: 15px;
+    text-align: left;
+    font-size: 13px;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid #58EBF0;
+    font-size: 13px;
+}
+
+.empty-message {
+    text-align: center;
+    padding: 45px 15px;
+}
+
+.empty-message span {
+    font-size: 35px;
+    color: #3976AE;
+}
+
+.empty-message h3 {
+    margin: 12px 0 8px;
+    font-size: 17px;
+}
+
+.empty-message p {
+    color: #758196;
+    font-size: 13px;
+}
+
+.access-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+}
+
+/* TELA DE MOVIMENTAÇÃO */
+
+.movement-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 750px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.moviment-container h2 {
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+
+/* RESPONSIVIDADE PARA CELULARES */
+
+@media (max-width: 600px) {
+    /* ESTRUTURA GERAL */
+    .container {
+        flex-direction: column;
+    }
+
+    .main-content {
+        width: 100%;
+        min-width: 0;
+        padding: 20px 15px;
+    }
+
+    /* MENU LATERAL */
+    .sidebar {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .logo {
+        margin-bottom: 18px;
+    }
+
+    .logo h2 {
+        font-size: 18px;
+    }
+
+    .menu-title {
+        margin-bottom: 8px;
+    }
+
+    .sidebar nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .sidebar nav a {
+        font-size: 12px;
+        padding: 10px 8px;
+        margin-bottom: 0;
+    }
+
+    .sidebar-footern{
+        display: none;
+    }
+
+    /* CABEÇALHO */
+    .topbar {
+        margin-bottom: 25px;
+        font-size: 12px;
+        gap: 10px;
+    }
+
+    .user {
+        padding: 8px 10px;
+        white-space: nowrap;
+    }
+
+    /* BOAS VINDAS */
+    .welcome h1 {
+        font-size: 23px;
+    }
+
+    .welcome p {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    /* CARDS */
+    .statistics {
+    grid-template-columns: 1fr;
+    gap: 12px;
+
+     }
+
+     .stat-card {
+        padding: 18px;
+     }
+
+     /* ACESSOS RAPIDOS */
+     .access-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+     }
+
+     .access-card {
+        padding: 18px;
+     }
+
+     /* FORMULÁRIOS */
+     .form-container,
+     .movement-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px 15px;
+     }
+
+     .form-buttons {
+        flex-direction: column;
+     }
+
+     .form-buttons button {
+        width: 100%;
+     }
+
+     /* LISTAGEM DE PRODUTOS */
+     .products-container {
+        padding: 18px 12px;
+     }
+
+     .products-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+     }
+
+     .btn-new-product {
+        display: inline-block;
+     }
+
+     /* TABELAS */
+     .table-container {
+        width: 100%;
+        overflow: auto;
+     }
+
+     table {
+        min-width: 550px;
+     }
+
+     th,
+     td {
+        padding: 12px;
+        white-space: nowrap;
+     }
+
+     /* RODAPÈ */
+     footer {
+        font-size: 11px;
+        line-height: 1.5;
+        margin-top: 30px;
+     }
+}
+
+/* CELULARES MENORES */
+@media (max-width: 380px) {
+    .main-content {
+        padding: 15px 10px;
+    }
+
+    .sidebar {
+        padding: 12px 8px;
+    }
+
+    .sidebar nav a {
+        font-size: 11px;
+        padding: 9px 6px;
+    }
+
+    .welcome h1 {
+        font-size: 21px;
+    }
+
+    .stat-card h2 {
+        font-size: 22px;
+    }
+}

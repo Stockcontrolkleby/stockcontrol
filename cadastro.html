@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Produto - StockControl</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+
+        <!-- MENU LATERAL -->
+         <aside class="sidebar">
+
+            <div class="logo">
+
+                <span class="logo-icon">▣</span>
+                <h2>StockControl</h2>
+            </div>
+
+            <nav>
+                <p class="menu-title">MENU PRINCIPAL</p>
+
+                <a href="index.html">⌂ &nbsp; Início</a>
+                <a href="cadastro.html" class="active">＋ &nbsp; Cadastrar produto</a>
+                <a href="produtos.html">▤ &nbsp; Produtos</a>
+                <a href="movimentacao.html">⇄ &nbsp; Movimentação</a>
+                <a href="estoque-baixo.html">⚠ &nbsp; Estoque baixo</a>
+            </nav>
+
+            <div class="sidebar-footer">Sistema de Controle de Estoque</div>
+
+         </aside>
+
+         <!-- CONTEÚDO PRINCIPAL -->
+          <main class="main-content">
+            <header class="topbar">
+                <span>Painel de controle / Cadastro</span>
+                <span class="user">Administrador</span>
+            </header>
+
+            <section class="welcome">
+                <h1>Cadastrar produto</h1>
+                <p>Preencha as informações para adicionar um novo produto.</p>
+            </section>
+
+            <!-- FORMULÁRIO -->
+             <section class="form-container">
+                <h2>Informações do produto</h2>
+                <p class="section-description">
+                    Informe os dados abaixo.
+                </p>
+
+                <form>
+                    <div class="form-group">
+                        <label for="nome">Nome do produto</label>
+                        <input type="text" id="nome" placeholder="Ex: Italakinho">
+                    </div>
+                    <div class="form-group">
+                        <label for="categoria">Categoria</label>
+                        <select id="categoria">
+                            <option value="">Selecione uma categoria</option>
+                            <option value="Laticínios">Laticínios</option>
+                            <option value="Bebidas">Bebidas</option>
+                            <option value="Frios e embutidos">Frios e embutidos</option>
+                            <option value="Mercearia">Mercearia</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quantidade">Quantidade Inicial</label>
+
+                        <input type="number" id="quantidade" min="0" placeholder="Ex: 50">
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="reset" class="btn-clear">Limpar campos</button>
+                        <button type="button" class="btn-save">Salvar produto</button>
+                    </div>
+                </form>
+             </section>
+
+             <footer>StockControl © 2026 - Sistema de Controle de Estoque</footer>
+
+          </main>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

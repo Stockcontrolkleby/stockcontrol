@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockControl - Controle de Estoque</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+
+        <!--MENU LATERAL-->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <span class="logo-icon">▣</span>
+                <h2>StockControl</h2>
+            </div>
+
+            <nav>
+                <p class="menu-title">MENU PRINCIPAL</p>
+
+                <a href="#" class="active">⌂ &nbsp; Início</a>
+                <a href="cadastro.html">＋ &nbsp; Cadastrar produto</a>
+                <a href="produtos.html">▤ &nbsp; Produtos</a>
+                <a href="movimentacao.html">⇄ &nbsp; Movimentação</a>
+                <a href="estoque-baixo.html">⚠ &nbsp; Estoque baixo</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                Sistema de Controle de Estoque
+            </div>
+
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+         <main class="main-content">
+            <header class="topbar">
+                <span>Painel de controle</span>
+                <span class="user">Administrador</span>
+            </header>
+
+            <section class="welcome">
+                <h1>Olá! Bem vindo.</h1>
+                <p>Gerencie seus produtos e acompanhe seu estoque.</p>
+            </section>
+
+            <!-- CARDS DE INFORMAÇÕES -->
+             <section class="statistics">
+
+                <div class="stat-card">
+                    <span class="stat-icon blue">▣</span>
+                    <div>
+                        <p>Produtos cadastrados</p>
+                        <h2 id="total-produtos">--</h2>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-icon green">▦</span>
+                    <div>
+                        <p>Unidades em estoque</p>
+                        <h2 id="total-unidades">--</h2>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-icon orange">⚠</span>
+                    <div>
+                        <p>Estoque baixo</p>
+                        <h2 id="total-estoque-baixo">--</h2>
+                    </div>
+                </div>
+
+             </section>
+
+             <!-- ACESSOS RÁPIDOS -->
+             <section class="quick-acess">
+
+                <h2>Acessos rápidos</h2>
+                <p class="section-description">
+                    Escolha uma opção para continuar.
+                </p>
+
+                <div class="access-grid">
+                    <a href="cadastro.html" class="access-card">
+                        <span>＋</span>
+                        <h3>Cadastrar produto</h3>
+                        <p>Adicione novos produtos ao estoque.</p>
+                    </a>
+
+                    <a href="produtos.html" class="access-card">
+                        <span>▤</span>
+                        <h3>Ver produtos</h3>
+                        <p>Consulte os produtos cadastrados.</p>
+                    </a>
+
+                    <a href="movimentacao.html" class="access-card">
+                        <span>⇄</span>
+                        <h3>Movimentação</h3>
+                        <p>Registre entradas e saídas.</p>
+                    </a>
+
+                    <a href="estoque-baixo.html" class="access-card">
+                        <span>⚠</span>
+                        <h3>Estoque baixo</h3>
+                        <p>Verifique produtos com poucas unidades.</p>
+                    </a>
+                </div>
+             </section>
+
+             <footer>
+                StockControl © 2026 - Sistemas de Controle de Estoque
+             </footer>
+         </main>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estoque Baixo - StockControl</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- MENU LATERAL -->
+         <aside class="sidebar">
+
+            <div class="logo">
+                <span class="logo-icon">▣</span>
+                <h2>StockControl</h2>
+            </div>
+
+            <nav>
+                <p class="menu-title">MENU PRINCIPAL</p>
+
+                <a href="index.html">⌂ &nbsp; Início</a>
+                <a href="cadastro.html">＋ &nbsp; Cadastrar produtos</a>
+                <a href="produtos.html">▤ &nbsp; Produtos</a>
+                <a href="movimentacao.html">⇄ &nbsp; Movimentação</a>
+                <a href="estoque-baixo.html" class="active">⚠ &nbsp; Estoque baixo</a>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                Sistema de Controle de Estoque
+            </div>
+         </aside>
+
+         <!-- CONTEUDO PRINCIPAL -->
+          <main class="main-content">
+
+            <header class="topbar">
+                <span>Painel de controle / Estoque baixo</span>
+                <span class="user">Administrador</span>
+            </header>
+
+            <section class="welcome">
+                <h1>Estoque Baixo</h1>
+
+                <p>
+                    Acompanhe os produtos que precisam de reposição no estoque.
+                </p>
+            </section>
+
+            <!-- LISTAGEM DE ESTOQUE BAIXO -->
+             <section class="products-container">
+                <div class="products-header">
+                    <div>
+                        <h2> Produtos com estoque baixo</h2>
+                        <p class="section-description">
+                            Consulte os produtos com menos de 20 unidades em estoque.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- TABELA -->
+                 <div class="table-container">
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Categoria</th>
+                                <th>Quantidade atual</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="lista-estoque-baixo">
+                            <!-- Produtos com menos de 20 unidades -->
+                        </tbody>
+
+                    </table>
+
+                    <div class="empty-message">
+                        <span>⚠</span>
+                        <h3>Nenhum produto com estoque baixo</h3>
+                        <p>
+                            Os produtos com menos de 20 unidades aparecerão aqui.
+                        </p>
+                    </div>
+                 </div>
+             </section>
+
+             <footer>
+                StockControl © 2026 - Sistema de Controle de Estoque
+             </footer>
+          </main>
+    </div>
+
+    <!-- INTEGRAÇÃO COM O BACKEND -->
+    <script>
+        const LIMITE_ESTOQUE_BAIXO = 20;
+
+        async function carregarEstoqueBaixo() {
+            const tabela = document.getElementById("lista-estoque-baixo");
+            const mensagemVazia = document.querySelector(".empty-message");
+
+            try {
+                const resposta = await fetch("http://localhost:8080/api/produtos");
+
+                if (!resposta.ok) {
+                    throw new Error("Erro ao consultar os produtos.");
+                }
+
+                const produtos = await resposta.json();
+
+                const produtosBaixos = produtos.filter(produto =>
+                    Number.isInteger(produto.quantidade) &&
+                    produto.quantidade >= 0 &&
+                    produto.quantidade < LIMITE_ESTOQUE_BAIXO
+                );
+
+                tabela.innerHTML = "";
+
+                if (produtosBaixos.length === 0) {
+                    mensagemVazia.style.display = "";
+                    return;
+                }
+
+                mensagemVazia.style.display = "none";
+
+                produtosBaixos.forEach(produto => {
+                    const linha = document.createElement("tr");
+
+                    const nome = document.createElement("td");
+                    nome.textContent = produto.nome ?? "";
+
+                    const categoria = document.createElement("td");
+                    categoria.textContent = produto.categoria ?? "";
+
+                    const quantidade = document.createElement("td");
+                    quantidade.textContent = produto.quantidade;
+
+                    const status = document.createElement("td");
+                    status.textContent = produto.quantidade === 0
+                        ? "Sem estoque"
+                        : "Estoque baixo";
+
+                    linha.append(nome, categoria, quantidade, status);
+                    tabela.appendChild(linha);
+                });
+
+            } catch (erro) {
+                console.error("Erro ao carregar estoque baixo:", erro);
+                tabela.innerHTML = "";
+                mensagemVazia.style.display = "none";
+
+                const linha = document.createElement("tr");
+                const celula = document.createElement("td");
+                celula.colSpan = 4;
+                celula.textContent =
+                    "Não foi possível carregar os produtos. Verifique a conexão com o servidor.";
+
+                linha.appendChild(celula);
+                tabela.appendChild(linha);
+            }
+        }
+
+        carregarEstoqueBaixo();
+    </script>
+
+</body>
+</html>

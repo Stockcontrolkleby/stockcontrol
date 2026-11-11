@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - StockControl</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- MENU LATERAL -->
+         <aside class="sidebar">
+
+            <div class="logo">
+                <span class="logo-icon">▣</span>
+                <h2>StockControl</h2>
+            </div>
+
+            <nav>
+                <p class="menu-title">MENU PRINCIPAL</p>
+
+                <a href="index.html">⌂ &nbsp; Início</a>
+                <a href="cadastro.html">＋ &nbsp; Cadastrar produto</a>
+                <a href="produtos.html" class="active">▤ &nbsp; Produtos</a>
+                <a href="movimentacao.html">⇄ &nbsp; Movimentação</a>
+                <a href="estoque-baixo.html">⚠ &nbsp; Estoque baixo</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                Sistema de Controle de Estoque
+            </div>
+         </aside>
+
+         <!-- CONTEÚDO PRINCIPAL -->
+          <main class="main-content">
+
+            <header class="topbar">
+                <span>Painel de controle / Produtos</span>
+                <span class="user">Administrador</span>
+            </header>
+
+            <section class="welcome">
+                <h1>Produtos</h1>
+                <p>Visualize e gerencie os produtos cadastrados no estoque.</p>
+            </section>
+
+            <!-- LISTAGEM DE PRODUTOS -->
+            <section class="products-container">
+
+                <div class="products-header">
+                    <div>
+                        <h2>Todos os produtos</h2>
+                        <p class="section-description">
+                            Consulte os produtos registrados no sistema.
+                        </p>
+                    </div>
+
+                    <a href="cadastro.html" class="btn-new-product">
+                        + Cadastrar produto
+                    </a>
+                </div>
+
+                <!-- TABELA -->
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Categoria</th>
+                                <th>Quantidade</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="lista-produtos">
+                            <!-- Produtos inseridos automaticamente -->
+                        </tbody>
+                    </table>
+
+                    <div class="empty-message">
+                        <span>▤</span>
+                        <h3>Nenhum produto cadastrado</h3>
+                        <p>
+                            Os produtos adicionados ao estoque aparecerão aqui.
+                        </p>
+                    </div>
+                </div>
+
+            </section>
+
+            <footer>StockControl © 2026 - Sistema de Controle de Estoque</footer>
+
+          </main>
+    </div>
+
+    <script>
+        async function carregarProdutos() {
+            const tabela = document.getElementById("lista-produtos");
+            const mensagemVazia = document.querySelector(".empty-message");
+
+            try {
+                const resposta = await fetch("http://localhost:8080/api/produtos");
+
+                if (!resposta.ok) {
+                    throw new Error("Erro ao buscar produtos.");
+                }
+
+                const produtos = await resposta.json();
+
+                tabela.innerHTML = "";
+
+                if (produtos.length === 0) {
+                    mensagemVazia.style.display = "";
+                    return;
+                }
+
+                mensagemVazia.style.display = "none";
+
+                produtos.forEach(produto => {
+                    const linha = document.createElement("tr");
+
+                    const nome = document.createElement("td");
+                    nome.textContent = produto.nome ?? "";
+
+                    const categoria = document.createElement("td");
+                    categoria.textContent = produto.categoria ?? "";
+
+                    const quantidade = document.createElement("td");
+                    quantidade.textContent = produto.quantidade;
+
+                    const status = document.createElement("td");
+
+                    if (produto.quantidade === 0) {
+                        status.textContent = "Sem estoque";
+                    } else if (produto.quantidade < 20) {
+                        status.textContent = "Estoque baixo";
+                    } else {
+                        status.textContent = "Normal";
+                    }
+
+                    linha.append(nome, categoria, quantidade, status);
+                    tabela.appendChild(linha);
+                });
+
+            } catch (erro) {
+                console.error("Erro ao carregar produtos:", erro);
+                tabela.innerHTML = "";
+                mensagemVazia.style.display = "none";
+
+                const linha = document.createElement("tr");
+                const celula = document.createElement("td");
+
+                celula.colSpan = 4;
+                celula.textContent =
+                    "Não foi possível carregar os produtos. Verifique a conexão com o servidor.";
+
+                linha.appendChild(celula);
+                tabela.appendChild(linha);
+            }
+        }
+
+        carregarProdutos();
+    </script>
+
+</body>
+</html>
