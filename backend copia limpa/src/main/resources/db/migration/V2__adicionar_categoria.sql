@@ -1,0 +1,5 @@
+ALTER TABLE produtos
+ADD COLUMN categoria VARCHAR(100);
+
+ALTER TABLE produtos
+ALTER COLUMN preco DROP NOT NULL;
